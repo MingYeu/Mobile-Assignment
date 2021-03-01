@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--        app:layout_constraintStart_toStartOf="parent"--><![CDATA[
+    app:layout_constraintTop_toBottomOf="@+id/imgAdd" />
+
+
+
+
+
+
+
+
+    ]]>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="295dp"
+        android:layout_height="266dp"
+        android:layout_gravity="center"
+        android:contentDescription="TODO"
+        android:onClick="selectImage"
+        android:textAlignment="center"
+        app:srcCompat="@drawable/addproductimg" />
+
+    <TextView
+        android:id="@+id/tvProductID"
+        android:layout_width="132dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+
+    <Spinner
+        android:id="@+id/ddlproductType"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/etProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Product Name:"
+        android:inputType="textPersonName"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/etProductPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Each Price:"
+        android:inputType="number"
+        android:layout_gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/etProductQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Quantity:"
+        android:inputType="number"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/RackID"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btnToRackScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="save"
+        android:text="Save"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>
