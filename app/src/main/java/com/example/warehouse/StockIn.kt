@@ -2,6 +2,7 @@ package com.example.warehouse
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,7 +14,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -22,6 +22,8 @@ class StockIn : AppCompatActivity(){
 
     lateinit var spinner: Spinner
     lateinit var productType : String
+    lateinit var productId : String
+
     var selectedPicture : Uri? = null
     var selectedBitmap : Bitmap? = null
 
@@ -30,17 +32,18 @@ class StockIn : AppCompatActivity(){
         setContentView(R.layout.stock_in)
 
         //Product ID
-        val product = intent?.getStringExtra("productID")
+        productId = intent?.getStringExtra("productID").toString()
         val tv = findViewById<TextView>(R.id.tvProductID)
-        tv.setText(product)
+        tv.text = "Product id : $productId"
 
+        //Rack ID
         val rackID = intent?.getStringExtra("rackID")
         val rack = findViewById<TextView>(R.id.RackID)
-        rack.setText(rackID)
+        rack.text = "Rack id : $rackID"
 
         //Drop Down List Product Type
         spinner = findViewById<Spinner>(R.id.ddlproductType)
-        val spinnerOption = arrayOf("Computer", "Book", "Phone")
+        val spinnerOption = arrayOf("Product Type:", "Computer", "Book", "Phone")
         spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, spinnerOption)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -51,6 +54,38 @@ class StockIn : AppCompatActivity(){
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 productType = spinnerOption[position]
             }
+        }
+
+//        var prodId = findViewById<TextView>(R.id.tvProductID)
+//        var prodName = findViewById<EditText>(R.id.etProductName)
+//        var prodType = productType
+//        var pri = findViewById<EditText>(R.id.etProductPrice)
+//        var quant = findViewById<EditText>(R.id.etProductQuantity)
+//
+//        var abc = findViewById<Button>(R.id.btnToRackScan)
+//        abc.setOnClickListener{
+//            var helper = DBHelper(applicationContext)
+//            var db = helper.readableDatabase
+//            var rs = db.rawQuery("SELECT * FROM PRODUCTS", null)
+//
+//            var pdtName = findViewById<EditText>(R.id.etProductName)
+//        var prodID = productId
+//
+//        var pri = findViewById<EditText>(R.id.etProductPrice)
+//        var quant = findViewById<EditText>(R.id.etProductQuantity)
+
+//            var cv = ContentValues()
+//            cv.put("ProdID", prodId.text.toString())
+//            cv.put("ProdType", prodName.text.toString())
+//            cv.put("ProdName", prodType.toString())
+//            cv.put("Price", pri.text.toString())
+//            cv.put("QUANT", quant.text.toString())
+//            db.insert("PRODUCTS", null, cv)
+//        }
+        //Saved Button
+        val button: Button = findViewById(R.id.saved)
+        button.setOnClickListener {
+            save()
         }
     }
 
@@ -80,8 +115,6 @@ class StockIn : AppCompatActivity(){
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         val img = findViewById<ImageView>(R.id.imageView)
@@ -98,6 +131,7 @@ class StockIn : AppCompatActivity(){
                                 ImageDecoder.createSource(this.contentResolver, selectedPicture!!)
                         selectedBitmap = ImageDecoder.decodeBitmap(source)
                         img.setImageBitmap(selectedBitmap)
+                        BitmapHelper.getInstance().bitmap = selectedBitmap
 
                     } else {
                         selectedBitmap =
@@ -113,16 +147,38 @@ class StockIn : AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    fun save(view: View) {
+    private fun save() {
+        val prodName = findViewById<EditText>(R.id.etProductName)
+        val quant = findViewById<EditText>(R.id.etProductQuantity)
+        val price = findViewById<EditText>(R.id.etProductPrice)
 
         val alert = AlertDialog.Builder(this)
 
-        alert.setTitle("Save")
-        alert.setMessage("Are you sure")
 
-        alert.setNegativeButton("No") { dialogInterface: DialogInterface?, which: Int ->  Toast.makeText(applicationContext, "Not Saved", Toast.LENGTH_LONG).show()}
-        alert.setPositiveButton("Yes") { dialogInterface: DialogInterface?, which: Int ->  Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()}
 
-        alert.show()
+        if(prodName.text.isEmpty() || quant.text.isEmpty() || price.text.isEmpty() || productType == "Product Type:" )
+        {
+            alert.setTitle("Error")
+            alert.setMessage("Please fill in all the details")
+
+            alert.setPositiveButton("Alright", null)
+            alert.show()
+        }
+        else {
+            alert.setTitle("Save")
+            alert.setMessage("Are you sure")
+
+            alert.setNegativeButton("No") { dialogInterface: DialogInterface?, which: Int -> Toast.makeText(applicationContext, "Not Saved", Toast.LENGTH_LONG).show() }
+            alert.setPositiveButton("Yes") { dialogInterface: DialogInterface?, which: Int -> store()}
+
+            alert.show()
+        }
+    }
+
+    fun store(){
+        Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

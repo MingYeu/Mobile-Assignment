@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
+//import com.example.warehouse.DatabaseHelper as db
+
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,6 +18,43 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ProductScan::class.java)
             startActivity(intent)
         }
+
+//        var helper = DBHelper(applicationContext)
+//        var db = helper.readableDatabase
+//        var rs = db.rawQuery("SELECT * FROM PRODUCTS", null)
+//
+//        if(rs.moveToNext())
+//            Toast.makeText(applicationContext, rs.getString(1), Toast.LENGTH_LONG).show()
+//
+//        val abc = findViewById<EditText>(R.id.txt)
+//
+//        val but = findViewById<Button>(R.id.btn)
+//        but.setOnClickListener{
+//            var cv = ContentValues()
+//            cv.put("NAME", abc.text.toString())
+//            db.insert("PRODUCTS", null, cv)
+//
+//            abc.setText("")
+//            abc.requestFocus()
+
+
+
+//            var abc = findViewById<TextView>(R.id.txt)
+//            var helper2 = DBHelper(applicationContext)
+//            var db2 = helper2.readableDatabase
+//            val args = listOf(abc.text.toString()).toTypedArray()
+//            val rs2 = db2.rawQuery("SELECT * FROM USERS WHERE NAME = ?", args)
+//
+//            if(rs2.moveToNext())
+//                Toast.makeText(applicationContext, rs2.getString(1), Toast.LENGTH_LONG).show()
+//            else
+//                Toast.makeText(applicationContext, "cancel", Toast.LENGTH_LONG).show()
+
+//        }
+    }
+
+    override fun onBackPressed() {
+
     }
 
 
