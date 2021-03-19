@@ -19,6 +19,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnReport: ImageButton=findViewById(R.id.btn_report)
+        btnReport.setOnClickListener{
+            val intent = Intent(this, Report::class.java)
+            startActivity(intent)
+        }
+
 //        var helper = DBHelper(applicationContext)
 //        var db = helper.readableDatabase
 //        var rs = db.rawQuery("SELECT * FROM PRODUCTS", null)

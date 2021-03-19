@@ -3,4 +3,46 @@
     <string name="scan_product">Product Scan</string>
     <string name="scan_rack">Rack Scan</string>
     <string name="stock_in">Stock In</string>
+    <string name="title_activity_report">Report</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_inventory_report">InventoryReport</string>
+    <string name="select_the_rack_to_view_stock_remaining">Select the rack to view stock remaining</string>
+    <string name="view_report">View Report</string>
+    <string name="todo1">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="textview1">TextView</string>
+    <string name="product_id">Product ID</string>
+    <string name="textview2">TextView</string>
+    <string name="product_name">Product Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="textview3">TextView</string>
+    <string name="textview4">TextView</string>
+    <string name="textview5">TextView</string>
+    <string name="todo3">TODO</string>
+    <string name="todo4">TODO</string>
+    <string name="select_the_date_of_the_report">Select the date of the report</string>
+    <string name="date">Date</string>
+    <string name="product_id1">Product ID</string>
+    <string name="action">Action</string>
+    <string name="quantity1">Quantity</string>
+    <string name="textview6">TextView</string>
+    <string name="textview7">TextView</string>
+    <string name="textview8">TextView</string>
+    <string name="textview9">TextView</string>
+    <string name="date_of_the_report">Date_of_the_report</string>
+    <string name="select_your_report">Select Your Report</string>
+    <string name="inventory_report">Inventory Report</string>
+    <string name="history_report">History Report</string>
+    <string name="todo5">TODO</string>
+    <string name="todo6">TODO</string>
+    <string name="todo7">TODO</string>
+    <string name="imgreport">imgReport</string>
+    <string name="imgleft">imgLeft</string>
+    <string name="imgright">imgRight</string>
+    <string name="report">report</string>
+    <string name="rack">rack</string>
 </resources>

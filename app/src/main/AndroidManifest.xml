@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.warehouse">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse">
-
+        <activity android:name=".RackInReport"></activity>
+        <activity android:name=".InventoryReport" />
+        <activity android:name=".HistoryReport" />
+        <activity android:name=".Report" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProductScan"
+        <activity
+            android:name=".ProductScan"
             android:label="@string/scan_product">
             <intent-filter>
                 <action android:name="android.intent.action.ProductScan" />
@@ -33,17 +36,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StockIn"
-            android:parentActivityName=".MainActivity"
-            android:label="@string/stock_in">
+        <activity
+            android:name=".StockIn"
+            android:label="@string/stock_in"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.StockIn" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".RackScan"
+        <activity
+            android:name=".RackScan"
             android:label="@string/scan_rack">
             <intent-filter>
                 <action android:name="android.intent.action.RackScan" />
@@ -51,7 +55,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

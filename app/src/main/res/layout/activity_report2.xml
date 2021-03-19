@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Report">
+
+    <ImageView
+        android:id="@+id/imgReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/imgreport"
+        android:src="@drawable/download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSelectReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:text="@string/select_your_report"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="@+id/imgBtnInventory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgReport" />
+
+    <ImageButton
+        android:id="@+id/imgBtnInventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/inventory_report"
+        android:src="@drawable/inventory"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtnHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectReport"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/imgBtnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/history_report"
+        android:src="@drawable/history"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvInventory"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectReport" />
+
+    <TextView
+        android:id="@+id/tvInventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/inventory_report"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHistory"
+        app:layout_constraintEnd_toEndOf="@+id/imgBtnInventory"
+        app:layout_constraintStart_toStartOf="@+id/imgBtnInventory"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtnInventory"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/history_report"
+        app:layout_constraintEnd_toEndOf="@+id/imgBtnHistory"
+        app:layout_constraintStart_toStartOf="@+id/imgBtnHistory"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtnHistory" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
