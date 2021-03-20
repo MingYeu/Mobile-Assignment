@@ -25,6 +25,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnWarehouse: ImageButton=findViewById(R.id.btn_warehouse)
+        btnWarehouse.setOnClickListener{
+            val intent = Intent(this, warehouse::class.java)
+            startActivity(intent)
+        }
+
 //        var helper = DBHelper(applicationContext)
 //        var db = helper.readableDatabase
 //        var rs = db.rawQuery("SELECT * FROM PRODUCTS", null)

@@ -45,4 +45,18 @@
     <string name="imgright">imgRight</string>
     <string name="report">report</string>
     <string name="rack">rack</string>
+    <string name="track_word">Track</string>
+    <string name="search_word">Search</string>
+    <string name="maps_word">Map</string>
+    <string name="settings_word">Settings</string>
+    <string name="track">Track</string>
+    <string name="search">Search</string>
+    <string name="map">Map</string>
+    <string name="settings">Settings</string>
+    <string name="category">Category</string>
+    <string name="choose_your_state">Choose Your State</string>
+    <!--    <string name="product_id">Product ID</string>-->
+    <string name="always_enable_location_services">Always Enable Location Services</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

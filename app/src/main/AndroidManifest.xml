@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse">
-        <activity android:name=".RackInReport"></activity>
+        <activity android:name=".warehouse"></activity>
+        <activity android:name=".Warehouse" />
+        <activity android:name=".RackInReport" />
         <activity android:name=".InventoryReport" />
         <activity android:name=".HistoryReport" />
         <activity android:name=".Report" />

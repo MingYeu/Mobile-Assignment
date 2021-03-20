@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <EditText
+            android:id="@+id/edit_productId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:importantForAccessibility="no"
+            android:inputType="number"
+            android:labelFor="@id/lbl_productId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.298"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lbl_productId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="32dp"
+            android:importantForAccessibility="no"
+            android:text="@string/product_id"
+            app:layout_constraintBottom_toTopOf="@+id/edit_productId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.724" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner3"
+            tools:layout_editor_absoluteY="538dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="164dp"
+            android:text="@string/category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_productId" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="96dp"
+            android:text="@string/choose_your_state"
+            app:layout_constraintEnd_toEndOf="@+id/edit_productId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_productId" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
