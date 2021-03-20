@@ -37,12 +37,22 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // postToList()
+        postToList()
         val rvMap: RecyclerView = view.findViewById(R.id.rv_map)
-
         rvMap.apply {
             layoutManager= LinearLayoutManager(activity)
             adapter=MapAdapter(warehouseList)
+        }
+    }
+
+    private fun addToList(name:String){
+        warehouseList.add(name)
+       // detailsList.add(description)
+    }
+
+    private fun postToList(){
+        for(i in 1..3){
+            addToList("Warehouse $i")
         }
     }
 }
