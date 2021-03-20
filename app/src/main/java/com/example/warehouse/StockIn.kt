@@ -17,6 +17,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.database.*
 
 class StockIn : AppCompatActivity(){
 
@@ -172,13 +173,42 @@ class StockIn : AppCompatActivity(){
             alert.setPositiveButton("Yes") { dialogInterface: DialogInterface?, which: Int -> store()}
 
             alert.show()
+
+
         }
     }
 
     fun store(){
+        storeData()
+
         Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun storeData(){
+        val prodName = findViewById<EditText>(R.id.etProductName)
+        val quant = findViewById<EditText>(R.id.etProductQuantity)
+        val price = findViewById<EditText>(R.id.etProductPrice)
+
+//        val database = FirebaseDatabase.getInstance()
+//        val myRef = database.getReference("Stock")
+//
+//        myRef.child("A001").child("Name").setValue(prodName.text)
+//        myRef.child("A001").child("Quantity").setValue(quant.text)
+//        myRef.child("A001").child("Price").setValue(price.text)
+        val reff = FirebaseDatabase.getInstance().getReference().child("Stock");
+        val stockId = reff.push().key
+
+        val stock = Stock(prodName.text.toString(), quant.text.toString(), price.text.toString())
+
+        reff.setValue(stock).addOnCompleteListener{
+            Toast.makeText(applicationContext, "Done", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onBackPressed() {
+
     }
 }
