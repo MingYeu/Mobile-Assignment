@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.321" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_search"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="284dp"
@@ -42,7 +42,7 @@
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="59dp"
         android:background="@drawable/custom_button"
-        android:text="Go"
+        android:text="Scan"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

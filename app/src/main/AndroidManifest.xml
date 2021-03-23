@@ -18,6 +18,9 @@
         <activity android:name=".InventoryReport" />
         <activity android:name=".HistoryReport" />
         <activity android:name=".Report" />
+        <activity android:name=".Search" android:label="Search"/>
+        <activity android:name=".DisplayStock" android:label="Stock Information"/>
+        <activity android:name=".StockOut" android:label="Stock Out"/>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
