@@ -1,5 +1,6 @@
 package com.example.warehouse
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,17 +8,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(private var title:List<String>,private var detail:List<String>):
-    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter(private var itemList:List<TrackItem>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val itemTitle: TextView = itemView.findViewById(R.id.tv_title)
-       val itemDetails: TextView = itemView.findViewById(R.id.tv_description)
-
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+       val itemName:TextView = itemView.findViewById(R.id.tv_title)
+        val itemStatus:TextView = itemView.findViewById(R.id.tv_description)
+//        val itemQty:TextView = itemView.findViewById(R.id)
+        val fromWarehouse:TextView = itemView.findViewById(R.id.tv_warehouse)
         init {
-            itemView.setOnClickListener{ v: View ->
-                val position:Int=adapterPosition
-                Toast.makeText(itemView.context,"Yoou clicked on item # = ${position+1}", Toast.LENGTH_SHORT).show()
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context,TrackDetailActivity::class.java)
+                //intent.putExtra("ItemName",itemName.toString())
+                itemView.context.startActivity(intent)
             }
         }
     }
@@ -31,13 +33,17 @@ class RecyclerAdapter(private var title:List<String>,private var detail:List<Str
 
 
     override fun getItemCount(): Int {
-        return title.size;
+       return itemList.size
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
-       holder.itemTitle.text=title[position]
-        holder.itemDetails.text=detail[position]
-
+       val currentItem = itemList[position]
+        holder.itemName.setText(currentItem.itemName)
+        holder.itemStatus.setText(currentItem.status)
+        holder.fromWarehouse.setText(currentItem.fromWarehouse)
 
     }
+
+
+
 }
