@@ -62,4 +62,8 @@
     <string name="title">Item Title</string>
     <string name="detail_item_id">ItemId</string>
     <string name="detail_warehouse">Warehouse</string>
+    <string name="shipment_booked">Shipment Booked</string>
+    <string name="in_transit">In Transit</string>
+    <string name="out_of_delivery">Out of Delivery</string>
+    <string name="delivered">Delivered</string>
 </resources>

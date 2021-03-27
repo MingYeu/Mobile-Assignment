@@ -48,6 +48,7 @@ class TrackFragment : Fragment() {
         var items= ArrayList<TrackItem>()
         val database = FirebaseDatabase.getInstance()
         val trackRef = database.getReference("Track")
+        val rv_track: RecyclerView = view.findViewById(R.id.rv_track)
         //postToList()
         ////trackRef.child("S042").child("name").setValue("Laptop")
         var getData = object:ValueEventListener{
@@ -64,8 +65,7 @@ class TrackFragment : Fragment() {
                     // items.add(TrackItem("WA","WSD",89.0,8,"Hi","S3323"))
                     items.add(TrackItem(fromWarehouse, name, price, quantity, status, id))
                 }//items.add(TrackItem("WA","WSD",89.0,8,"Hi","S3323"))
-                val rv_track: RecyclerView = view.findViewById(R.id.rv_track)
-                rv_track.adapter=RecyclerAdapter(items)
+                rv_track.adapter=RecyclerAdapter(items,this@TrackFragment.requireContext())
                 rv_track.layoutManager=LinearLayoutManager(activity)
                 rv_track.setHasFixedSize(true)
 
@@ -85,6 +85,7 @@ class TrackFragment : Fragment() {
 //            layoutManager= LinearLayoutManager(activity)
 //            adapter=RecyclerAdapter(items)
 //        }
+
 
         trackRef.addValueEventListener(getData)
 

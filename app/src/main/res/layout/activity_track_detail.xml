@@ -44,6 +44,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/line_1"
+        android:layout_width="50dp"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_1"
+        app:layout_constraintEnd_toStartOf="@+id/circle_2"
+        app:layout_constraintStart_toEndOf="@+id/circle_1"
+        app:layout_constraintTop_toTopOf="@+id/circle_1"
+        app:srcCompat="@drawable/line" />
+    <ImageView
+        android:id="@+id/line_2"
+        android:layout_width="50dp"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_2"
+        app:layout_constraintEnd_toStartOf="@+id/circle_3"
+        app:layout_constraintStart_toEndOf="@+id/circle_2"
+        app:layout_constraintTop_toTopOf="@+id/circle_2"
+        app:srcCompat="@drawable/line" />
+
+    <ImageView
+        android:id="@+id/line_3"
+        android:layout_width="50dp"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_3"
+        app:layout_constraintEnd_toStartOf="@+id/circle_4"
+        app:layout_constraintStart_toEndOf="@+id/circle_3"
+        app:layout_constraintTop_toTopOf="@+id/circle_3"
+        app:srcCompat="@drawable/line" />
+
+    <ImageView
         android:id="@+id/circle_1"
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -51,7 +80,9 @@
         android:layout_marginTop="76dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/item_id"
-        app:srcCompat="@drawable/cerclebackgroundgrey"
+        android:padding="15dp"
+        android:background="@drawable/cerclebackgroundgrey"
+        app:srcCompat="@drawable/ic_baseline_check_24"
         android:contentDescription="TODO" />
 
     <ImageView
@@ -59,10 +90,13 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="20dp"
+        android:background="@drawable/cerclebackgroundgrey"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/circle_1"
         app:layout_constraintStart_toEndOf="@+id/circle_1"
         app:layout_constraintTop_toTopOf="@+id/circle_1"
-        app:srcCompat="@drawable/cerclebackgroundgrey" />
+        app:srcCompat="@drawable/ic_baseline_check_24"
+        />
 
     <ImageView
         android:id="@+id/circle_3"
@@ -72,7 +106,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/circle_2"
         app:layout_constraintStart_toEndOf="@+id/circle_2"
         app:layout_constraintTop_toTopOf="@+id/circle_2"
-        app:srcCompat="@drawable/cerclebackgroundgrey" />
+        android:padding="15dp"
+        android:background="@drawable/cerclebackgroundgrey"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
 
     <ImageView
         android:id="@+id/circle_4"
@@ -82,5 +118,52 @@
         app:layout_constraintBottom_toBottomOf="@+id/circle_3"
         app:layout_constraintStart_toEndOf="@+id/circle_3"
         app:layout_constraintTop_toTopOf="@+id/circle_3"
-        app:srcCompat="@drawable/cerclebackgroundgrey" />
+        android:padding="15dp"
+        android:background="@drawable/cerclebackgroundgrey"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
+
+    <TextView
+        android:id="@+id/shipment_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/shipment_booked"
+        android:textAlignment="textStart"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/circle_1"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="@+id/circle_1"
+        app:layout_constraintTop_toBottomOf="@+id/circle_1" />
+
+    <TextView
+        android:id="@+id/in_transit_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/in_transit"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/shipment_msg"
+        app:layout_constraintEnd_toEndOf="@+id/circle_2"
+        app:layout_constraintStart_toStartOf="@+id/circle_2" />
+
+    <TextView
+        android:id="@+id/out_delivery_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/out_of_delivery"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/in_transit_msg"
+        app:layout_constraintEnd_toEndOf="@+id/circle_3"
+        app:layout_constraintStart_toStartOf="@+id/circle_3" />
+
+    <TextView
+        android:id="@+id/delivered_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delivered"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/out_delivery_msg"
+        app:layout_constraintEnd_toEndOf="@+id/circle_4"
+        app:layout_constraintStart_toStartOf="@+id/circle_4" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

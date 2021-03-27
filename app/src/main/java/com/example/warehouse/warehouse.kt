@@ -10,7 +10,6 @@ class warehouse : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_warehouse)
-
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         val viewpager2 = findViewById<ViewPager2>(R.id.vp_warehouse)
         val adapter = PageAdapter(supportFragmentManager,lifecycle)

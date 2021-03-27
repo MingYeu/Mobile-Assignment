@@ -1,25 +1,25 @@
 package com.example.warehouse
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(private var itemList:List<TrackItem>):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter(private var itemList:List<TrackItem>,val context:Context):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
        val itemName:TextView = itemView.findViewById(R.id.tv_title)
         val itemStatus:TextView = itemView.findViewById(R.id.tv_description)
 //        val itemQty:TextView = itemView.findViewById(R.id)
         val fromWarehouse:TextView = itemView.findViewById(R.id.tv_warehouse)
         init {
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context,TrackDetailActivity::class.java)
-                //intent.putExtra("ItemName",itemName.toString())
-                itemView.context.startActivity(intent)
+
             }
         }
     }
@@ -42,8 +42,16 @@ class RecyclerAdapter(private var itemList:List<TrackItem>):RecyclerView.Adapter
         holder.itemStatus.setText(currentItem.status)
         holder.fromWarehouse.setText(currentItem.fromWarehouse)
 
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,TrackDetailActivity::class.java)
+            intent.putExtra("WarehouseName",currentItem.fromWarehouse)
+            intent.putExtra("ItemName",currentItem.itemName)
+            intent.putExtra("ItemId",currentItem.id)
+            intent.putExtra("ItemStatus",currentItem.status)
+            //intent.putExtra(EXTRA_ITEM,currentItem)
+            context.startActivity(intent)
+        }
+
     }
-
-
 
 }
