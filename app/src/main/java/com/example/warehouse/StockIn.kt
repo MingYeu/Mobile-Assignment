@@ -7,6 +7,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
@@ -23,10 +24,17 @@ import java.io.ByteArrayOutputStream
 
 class StockIn : AppCompatActivity(){
 
-//    lateinit var spinner: Spinner
-//    lateinit var productType : String
+    //    lateinit var spinner: Spinner
+    //    lateinit var productType : String
+
     lateinit var productId : String
     lateinit var rackID : String
+
+    lateinit var image : String
+    lateinit var productName : String
+    lateinit var productQuantity : String
+    lateinit var productPrice : String
+    var imageDisplay : Bitmap? = null
 
     var selectedPicture : Uri? = null
     var selectedBitmap : Bitmap? = null
@@ -44,6 +52,56 @@ class StockIn : AppCompatActivity(){
         rackID = intent?.getStringExtra("rackID").toString()
         val rack = findViewById<TextView>(R.id.RackID)
         rack.text = "Rack id : $rackID"
+
+        //Have Stock?
+        if(intent?.getStringExtra("hasStock").toString() == "1")
+        {
+            //Database
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("Stock").child(productId)
+
+            var getData = object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    image = snapshot.child("image").getValue().toString()
+                    productName = snapshot.child("name").getValue().toString()
+                    productPrice = snapshot.child("price").getValue().toString()
+                    productQuantity = snapshot.child("quantity").getValue().toString()
+                    productId = snapshot.child("stockId").getValue().toString()
+                    rackID = snapshot.child("rack").getValue().toString()
+
+                    //Image
+                    val imageBytes = Base64.decode(image, 0)
+                    selectedBitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+//                    imageDisplay = imag
+
+                    val img = findViewById<ImageView>(R.id.imageView)
+                    img.setImageBitmap(selectedBitmap)
+
+                    //Information
+                    val prodId = findViewById<TextView>(R.id.tvProductID)
+                    prodId.text = "Product id   : $productId"
+                    val prodRack = findViewById<TextView>(R.id.RackID)
+                    prodRack.text = "Rack id      : $rackID"
+                    val prodPri = findViewById<EditText>(R.id.etProductPrice)
+                    prodPri.setText("Price   : $productPrice")
+                    val prodNam = findViewById<EditText>(R.id.etProductName)
+                    prodNam.setText(" Name   : $productName")
+
+                    prodNam.isEnabled = false
+                    prodPri.isEnabled = false
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            }
+
+            myRef.addValueEventListener(getData)
+            myRef.addListenerForSingleValueEvent(getData)
+        }
 
         //Drop Down List Product Type
 //        spinner = findViewById<Spinner>(R.id.ddlproductType)
@@ -163,17 +221,15 @@ class StockIn : AppCompatActivity(){
 
     fun store(){
         storeData()
-
-        Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
-
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
     }
 
     private fun storeData(){
         val prodName = findViewById<EditText>(R.id.etProductName)
         val quant = findViewById<EditText>(R.id.etProductQuantity)
         val price = findViewById<EditText>(R.id.etProductPrice)
+
+        //Quantity
+        val updateQuantity = quant.text.toString().toInt() + productQuantity.toInt()
 
         //Convert Bitmap to String
         val by = ByteArrayOutputStream()
@@ -183,12 +239,25 @@ class StockIn : AppCompatActivity(){
 
         //firebase location
         val reff = FirebaseDatabase.getInstance().getReference().child("Stock");
-        val stockId = reff.push().key
+//        val stockId = reff.push().key
 
-        val stock = Stock(productId, prodName.text.toString(), quant.text.toString(), price.text.toString(), imgaeStore, rackID)
-
-        reff.child(productId).setValue(stock).addOnCompleteListener{
-            Toast.makeText(applicationContext, "Done", Toast.LENGTH_LONG).show()
+        val prodNam = findViewById<EditText>(R.id.etProductName)
+        if(prodNam.isEnabled == false)
+        {
+            val stock = Stock(productId, productName, updateQuantity.toString(), productPrice, imgaeStore, rackID)
+            reff.child(productId).setValue(stock).addOnCompleteListener{
+                Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        else{
+            val stock = Stock(productId, prodName.text.toString(), updateQuantity.toString(), price.text.toString(), imgaeStore, rackID)
+            reff.child(productId).setValue(stock).addOnCompleteListener{
+                Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

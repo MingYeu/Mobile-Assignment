@@ -12,6 +12,7 @@ import com.google.zxing.integration.android.IntentResult
 class RackScan : AppCompatActivity() {
 
     lateinit var prodID:String
+    lateinit var hasStock: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,9 @@ class RackScan : AppCompatActivity() {
 
         val product = intent?.getStringExtra("productID")
         prodID = product.toString()
+
+        val haveStock = intent?.getStringExtra("hasStock")
+        hasStock = haveStock.toString()
 
         val button: Button = findViewById(R.id.rack_scan)
         button.setOnClickListener {
@@ -40,6 +44,7 @@ class RackScan : AppCompatActivity() {
                     val intent = Intent(this, StockIn::class.java)
                     intent.putExtra("productID", prodID)
                     intent.putExtra("rackID", result.contents)
+                    intent.putExtra("hasStock", hasStock)
                     startActivity(intent)
                 }
             } else {

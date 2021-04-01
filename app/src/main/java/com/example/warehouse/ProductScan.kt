@@ -2,16 +2,25 @@ package com.example.warehouse
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 
 class ProductScan : AppCompatActivity() {
 
     lateinit var page : String
+    lateinit var productId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +30,12 @@ class ProductScan : AppCompatActivity() {
 
         val scanner = IntentIntegrator(this)
         scanner.initiateScan()
+
+        val clickScan = findViewById<Button>(R.id.product_scan)
+        clickScan.setOnClickListener(){
+            val scanner = IntentIntegrator(this)
+            scanner.initiateScan()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -31,7 +46,7 @@ class ProductScan : AppCompatActivity() {
                     Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
 
                 } else {
-//                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
                     navigate(result.contents)
                 }
             } else {
@@ -46,13 +61,15 @@ class ProductScan : AppCompatActivity() {
         {
             if(page.equals("1"))
             {
-                val intent = Intent(this, RackScan::class.java)
+                val intent = Intent(this, CheckStock::class.java)
+                intent.putExtra("page", page)
                 intent.putExtra("productID", productId)
                 startActivity(intent)
             }
             else if(page.equals("2"))
             {
-                val intent = Intent(this, StockOut::class.java)
+                val intent = Intent(this, CheckStock::class.java)
+                intent.putExtra("page", page)
                 intent.putExtra("productID", productId)
                 startActivity(intent)
             }

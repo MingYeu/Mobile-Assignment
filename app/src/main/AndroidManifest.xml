@@ -14,7 +14,9 @@
         android:theme="@style/Theme.Warehouse">
         <activity android:name=".TrackDetailActivity"></activity>
         <activity android:name=".warehouse" />
-        <activity android:name=".Warehouse" />
+        <activity android:name=".SearchEnterProduct" />
+        <activity android:name=".SearchScanProduct" />
+        <activity android:name=".CheckStock" />
         <activity android:name=".RackInReport" />
         <activity android:name=".InventoryReport" />
         <activity android:name=".HistoryReport" />

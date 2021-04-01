@@ -42,32 +42,38 @@ class StockOut : AppCompatActivity(){
         var getData = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                image = snapshot.child("image").getValue().toString()
-                productName = snapshot.child("name").getValue().toString()
-                productPrice = snapshot.child("price").getValue().toString()
-                productQuantity = snapshot.child("quantity").getValue().toString()
-                productId = snapshot.child("stockId").getValue().toString()
-                rackId = snapshot.child("rack").getValue().toString()
+                if(snapshot.child("stockId").getValue() == null)
+                {
+                    noProduct()
+                }
+                else {
+                    image = snapshot.child("image").getValue().toString()
+                    productName = snapshot.child("name").getValue().toString()
+                    productPrice = snapshot.child("price").getValue().toString()
+                    productQuantity = snapshot.child("quantity").getValue().toString()
+                    productId = snapshot.child("stockId").getValue().toString()
+                    rackId = snapshot.child("rack").getValue().toString()
 
-                //Image
-                val imageBytes = Base64.decode(image, 0)
-                val imag = decodeByteArray(imageBytes, 0, imageBytes.size)
-                imageDisplay = imag
+                    //Image
+                    val imageBytes = Base64.decode(image, 0)
+                    val imag = decodeByteArray(imageBytes, 0, imageBytes.size)
+                    imageDisplay = imag
 
-                val img = findViewById<ImageView>(R.id.imageView)
-                img.setImageBitmap(imag)
+                    val img = findViewById<ImageView>(R.id.imageView)
+                    img.setImageBitmap(imag)
 
-                //Information
-                val prodId = findViewById<TextView>(R.id.tvProductID)
-                prodId.text = "Product id   : $productId"
-                val prodRack = findViewById<TextView>(R.id.RackID)
-                prodRack.text = "Rack id      : $rackId"
-                val prodQuan = findViewById<TextView>(R.id.etProductQuantity)
-                prodQuan.text = "Quantity     : $productQuantity"
-                val prodPri = findViewById<TextView>(R.id.etProductPrice)
-                prodPri.text  = "Price        : $productPrice"
-                val prodNam = findViewById<TextView>(R.id.etProductName)
-                prodNam.text  = "Product Name : $productName"
+                    //Information
+                    val prodId = findViewById<TextView>(R.id.tvProductID)
+                    prodId.text = "Product id   : $productId"
+                    val prodRack = findViewById<TextView>(R.id.RackID)
+                    prodRack.text = "Rack id      : $rackId"
+                    val prodQuan = findViewById<TextView>(R.id.etProductQuantity)
+                    prodQuan.text = "Quantity     : $productQuantity"
+                    val prodPri = findViewById<TextView>(R.id.etProductPrice)
+                    prodPri.text = "Price        : $productPrice"
+                    val prodNam = findViewById<TextView>(R.id.etProductName)
+                    prodNam.text = "Product Name : $productName"
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -109,5 +115,12 @@ class StockOut : AppCompatActivity(){
         reff.child(productId).setValue(stock).addOnCompleteListener{
             Toast.makeText(applicationContext, "Done", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun noProduct()
+    {
+        Toast.makeText(applicationContext, "No this product", Toast.LENGTH_LONG).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
