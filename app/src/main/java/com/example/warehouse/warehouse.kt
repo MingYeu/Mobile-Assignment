@@ -20,8 +20,8 @@ class warehouse : AppCompatActivity() {
                 0->tab.text="Track"
                 1->tab.text="Search"
                 2->tab.text="Map"
-                3->tab.text="Settings"
-                else->0
+                //3->tab.text="Settings"
+                else->"Track"
             }
         }.attach()
     }

@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class PageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):
     FragmentStateAdapter(fragmentManager,lifecycle){
     override fun getItemCount(): Int {
-        return 4
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -16,7 +16,7 @@ class PageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):
             0-> TrackFragment()
             1-> SearchFragment()
             2-> MapFragment()
-            3-> SettingsFragment()
+            //3-> SettingsFragment()
             else-> TrackFragment()
         }
 

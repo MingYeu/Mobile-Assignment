@@ -20,7 +20,7 @@
             android:autofillHints=""
             android:ems="10"
             android:importantForAccessibility="no"
-            android:inputType="number"
+            android:inputType="textCapSentences"
             android:labelFor="@id/lbl_productId"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.298"
@@ -60,12 +60,11 @@
             android:id="@+id/btn_search"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="@string/search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner3"
-            tools:layout_editor_absoluteY="538dp" />
+            app:layout_constraintEnd_toEndOf="@+id/spinner3"
+            app:layout_constraintStart_toStartOf="@+id/spinner3"
+            app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
         <TextView
             android:id="@+id/textView2"

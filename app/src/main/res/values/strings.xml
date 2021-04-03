@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Warehouse</string>
-    <string name="scan_product">Product ID Scan</string>
+    <string name="scan_product">Product Scan</string>
     <string name="scan_rack">Rack Scan</string>
     <string name="stock_in">Stock In</string>
     <string name="title_activity_report">Report</string>
@@ -66,4 +66,13 @@
     <string name="in_transit">In Transit</string>
     <string name="out_of_delivery">Out of Delivery</string>
     <string name="delivered">Delivered</string>
+    <string name="title_activity_details_map">Map</string>
+
+    <string name="dropped_pin">Dropped Pin</string>
+    <string name="retrive_products_list">Retrive products list</string>
+    <string name="show_internal_maps">Show Internal Maps</string>
+    <string name="prodid">ProdId</string>
+    <string name="item_name">Item Name</string>
+    <string name="rack_id">Rack Id</string>
+    <string name="price">RM %s</string>
 </resources>
