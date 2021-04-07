@@ -40,6 +40,10 @@
         <activity android:name=".InventoryReport" />
         <activity android:name=".HistoryReport" />
         <activity android:name=".Report" />
+        <activity android:name=".SearchScanProduct"/>
+        <activity android:name=".SearchEnterProduct"/>
+        <activity android:name=".CheckStock"/>
+        <activity android:name=".Homepage" android:label="HomePage"/>
         <activity
             android:name=".Search"
             android:label="Search" />

@@ -92,6 +92,12 @@ class StockOut : AppCompatActivity(){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val btnCancel = findViewById<Button>(R.id.btnStock_out_cancel)
+        btnCancel.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
     private fun Save_Stock_out() {
         //Convert Bitmap to String
