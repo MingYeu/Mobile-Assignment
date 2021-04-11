@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtIptUN" type="id" />
+    <item name="txtIptPwd" type="id" />
+    <item name="txtIptE" type="id" />
+    <item name="txtIptFN" type="id" />
+    <item name="btnSignIn2" type="id" />
+    <item name="btnCreateAccount1" type="id" />
+    <item name="btnCreateAccount2" type="id" />
+</resources>
