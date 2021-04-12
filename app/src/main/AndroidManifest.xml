@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse">
-        <activity android:name=".RetriveProdActivity"></activity>
-        <activity android:name=".InternalMapActivity" />
+        <activity android:name=".SearchProdActivity" android:label="Search" />
+        <activity android:name=".RetriveProdActivity" android:label="Details" />
+        <activity android:name=".InternalMapActivity" android:label="Internal Maps"  />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,20 +32,19 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAWcBgVbgBMS-HAZY-OctS9MrC0AuwXhC4" />
 
-        <activity android:name="com.example.warehouse.MyProfile"></activity>
-        <activity android:name="com.example.warehouse.CreateNewPassword" />
-        <activity android:name="com.example.warehouse.Verify" />
-        <activity android:name="com.example.warehouse.ForgotPassword" />
-        <activity android:name="com.example.warehouse.SignUp" />
-        <activity android:name="com.example.warehouse.CreateAccSuccess" />
-        <activity android:name="com.example.warehouse.LogIn">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MyProfile" />
+        <activity android:name=".CreateNewPassword" />
+        <activity android:name=".Verify" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".CreateAccSuccess" />
+        <activity android:name=".LogIn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
         <activity
             android:name=".DetailsMapActivity"
             android:label="@string/title_activity_details_map" />
@@ -54,10 +54,12 @@
         <activity android:name=".InventoryReport" />
         <activity android:name=".HistoryReport" />
         <activity android:name=".Report" />
-        <activity android:name=".SearchScanProduct"/>
-        <activity android:name=".SearchEnterProduct"/>
-        <activity android:name=".CheckStock"/>
-        <activity android:name=".Homepage" android:label="HomePage"/>
+        <activity android:name=".SearchScanProduct" />
+        <activity android:name=".SearchEnterProduct" />
+        <activity android:name=".CheckStock" />
+        <activity
+            android:name=".Homepage"
+            android:label="HomePage" />
         <activity
             android:name=".Search"
             android:label="Search" />
@@ -71,7 +73,7 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ProductScan"
             android:label="@string/scan_product">
