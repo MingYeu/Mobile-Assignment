@@ -31,12 +31,9 @@ class RetriveProdActivity : AppCompatActivity() {
 
         val items= ArrayList<categoryItem>()
         val showName = ArrayList<String>()
-        //testA.add("hi")
         val database = FirebaseDatabase.getInstance()
         val trackProd = database.getReference("State").child(stateName).child(categoryName)
-        //val rv_track: RecyclerView = view.findViewById(R.id.rv_track)
-        //postToList()
-        ////trackRef.child("S042").child("name").setValue("Laptop")
+
         var getItem = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 //
@@ -48,7 +45,6 @@ class RetriveProdActivity : AppCompatActivity() {
                     var id = c.child("stockId").getValue().toString()
                    items.add(categoryItem(itemName,itemPrice,quantity,rack,id))
                     showName.add(id)
-                   // testA.add(name)
                 }
 
 
@@ -76,9 +72,6 @@ class RetriveProdActivity : AppCompatActivity() {
                 rack_Id.setText(currentItem.rack)
                 prodQty.setText(currentItem.quantity.toString())
                 prod_Price.setText(currentItem.price.toString())
-//                prod_Id.setText(currentItem.id)
-//                prod_Name.setText(currentItem.itemName)
-                //Toast.makeText(this@DetailsMapActivity,"Selected" + items[position] ,Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

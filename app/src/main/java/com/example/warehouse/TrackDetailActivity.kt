@@ -61,10 +61,5 @@ class TrackDetailActivity : AppCompatActivity() {
             line_3.setImageResource(R.drawable.line_green)
         }
 
-
-        //itemTitle.setText(name)
-//        when(status){
-//            "on_Transit"->R.drawable.cerclebackgroundgrey
-//        }
     }
 }
