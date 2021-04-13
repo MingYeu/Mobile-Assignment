@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +22,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.database.*
 import java.io.ByteArrayOutputStream
+import java.util.*
+
 
 class StockIn : AppCompatActivity(){
 
@@ -34,6 +37,8 @@ class StockIn : AppCompatActivity(){
     lateinit var productName : String
     lateinit var productQuantity : String
     lateinit var productPrice : String
+    lateinit var totalQuantity : String
+
     var imageDisplay : Bitmap? = null
 
     var selectedPicture : Uri? = null
@@ -53,22 +58,26 @@ class StockIn : AppCompatActivity(){
         val rack = findViewById<TextView>(R.id.RackID)
         rack.text = "Rack id : $rackID"
 
+//        val ref = FirebaseDatabase.getInstance().getReference("Report")
+//        ref.setValue("History")
+
         //Have Stock?
         if(intent?.getStringExtra("hasStock").toString() == "1")
         {
             //Database
             val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("Stock").child(productId)
+            val myRef = database.getReference()
 
             var getData = object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    image = snapshot.child("image").getValue().toString()
-                    productName = snapshot.child("name").getValue().toString()
-                    productPrice = snapshot.child("price").getValue().toString()
-                    productQuantity = snapshot.child("quantity").getValue().toString()
-                    productId = snapshot.child("stockId").getValue().toString()
-                    rackID = snapshot.child("rack").getValue().toString()
+                    image = snapshot.child("Stock").child(productId).child("image").getValue().toString()
+                    productName = snapshot.child("Stock").child(productId).child("name").getValue().toString()
+                    productPrice = snapshot.child("Stock").child(productId).child("price").getValue().toString()
+                    productQuantity = snapshot.child("Stock").child(productId).child("quantity").getValue().toString()
+                    productId = snapshot.child("Stock").child(productId).child("stockId").getValue().toString()
+                    rackID = snapshot.child("Stock").child(productId).child("rack").getValue().toString()
+                    totalQuantity=snapshot.child("Report").child("Inventory").child(rackID).child("totalQty").getValue().toString()
 
                     //Image
                     val imageBytes = Base64.decode(image, 0)
@@ -98,9 +107,27 @@ class StockIn : AppCompatActivity(){
                 }
 
             }
+/*
+            val refInventory = FirebaseDatabase.getInstance().getReference("Report").child("Inventory").child(rackID)
+
+            var getInvData=object:ValueEventListener{
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
+                override fun onDataChange(snapShot: DataSnapshot) {
+                    totalQuantity=snapShot.child("totalQty").getValue().toString()
+
+                }
+            }
+*/
+
 
             myRef.addValueEventListener(getData)
             myRef.addListenerForSingleValueEvent(getData)
+
+//            refInventory.addValueEventListener(getInvData)
+//            refInventory.addListenerForSingleValueEvent(getInvData)
         }
 
         //Drop Down List Product Type
@@ -230,6 +257,11 @@ class StockIn : AppCompatActivity(){
 
         //Quantity
         val updateQuantity = quant.text.toString().toInt() + productQuantity.toInt()
+        //date
+        val dateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val date = Date()
+        val strDate = dateFormat.format(date).toString()
+        val action= "In"
 
         //Convert Bitmap to String
         val by = ByteArrayOutputStream()
@@ -238,14 +270,15 @@ class StockIn : AppCompatActivity(){
         val imgaeStore = Base64.encodeToString(b, Base64.DEFAULT)
 
         //firebase location
-        val reff = FirebaseDatabase.getInstance().getReference().child("Stock");
+        val reff = FirebaseDatabase.getInstance().getReference()
 //        val stockId = reff.push().key
+//        val refHistoryReport = FirebaseDatabase.getInstance().getReference("Report")
 
         val prodNam = findViewById<EditText>(R.id.etProductName)
         if(prodNam.isEnabled == false)
         {
             val stock = Stock(productId, productName, updateQuantity.toString(), productPrice, imgaeStore, rackID)
-            reff.child(productId).setValue(stock).addOnCompleteListener{
+            reff.child("Stock").child(productId).setValue(stock).addOnCompleteListener{
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -253,12 +286,28 @@ class StockIn : AppCompatActivity(){
         }
         else{
             val stock = Stock(productId, prodName.text.toString(), updateQuantity.toString(), price.text.toString(), imgaeStore, rackID)
-            reff.child(productId).setValue(stock).addOnCompleteListener{
+            reff.child("Stock").child(productId).setValue(stock).addOnCompleteListener{
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
+        val ref = FirebaseDatabase.getInstance().getReference("Report").child("History").child(strDate)
+        val pushedPostRef: DatabaseReference = ref.push()
+        val postId = pushedPostRef.key
+
+        val refReport=ref.child(postId.toString())
+        refReport.child("Date").setValue(strDate)
+        refReport.child("Product Id").setValue(productId)
+        refReport.child("Product Name").setValue(productName)
+        refReport.child("Action").setValue(action)
+        refReport.child("Quantity").setValue(quant.text.toString())
+
+        val refInventory = FirebaseDatabase.getInstance().getReference("Report").child("Inventory").child(rackID)
+        val totalQty= (quant.text.toString().toInt()+totalQuantity.toInt()).toString()
+        refInventory.child("totalQty").setValue(totalQty)
+        refInventory.child("Rack").setValue(rackID)
+
     }
 
     override fun onBackPressed() {

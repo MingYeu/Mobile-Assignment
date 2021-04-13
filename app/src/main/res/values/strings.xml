@@ -75,4 +75,5 @@
     <string name="item_name">Item Name</string>
     <string name="rack_id">Rack Id</string>
     <string name="price">RM %s</string>
+    <string name="change_date">change_date</string>
 </resources>
