@@ -69,13 +69,13 @@
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/tvProductIdHisData"
+            android:id="@+id/tvProdId"
             android:layout_width="76dp"
             android:layout_height="match_parent"
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/tvProductNameHisData"
+            android:id="@+id/tvProdName"
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:textAlignment="textStart" />
@@ -87,7 +87,7 @@
             android:textAlignment="textStart" />
 
         <TextView
-            android:id="@+id/tvHisQtyData"
+            android:id="@+id/tvProdQty"
             android:layout_width="86dp"
             android:layout_height="match_parent"
             android:textAlignment="textStart" />

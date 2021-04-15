@@ -9,45 +9,8 @@
     tools:context=".InventoryReport"
     >
 
-    <ImageButton
-        android:id="@+id/imgBtnLeft"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/imgleft"
-        android:src="@drawable/left_arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvRackId" />
 
-    <ImageButton
-        android:id="@+id/imgBtnRight"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/imgright"
-        android:src="@drawable/right_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvRackId" />
-
-    <TextView
-        android:id="@+id/tvRackId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvTotalQty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-
-    <TextView
-        android:id="@+id/tvTotalQty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
+    <!--
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
@@ -65,7 +28,7 @@
     <TableRow
         android:id="@+id/tableRow"
         android:layout_width="match_parent"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,25 +36,28 @@
 
         <TextView
             android:id="@+id/tvProductId"
-            android:layout_width="95dp"
-            android:layout_height="30dp"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
             android:text="@string/product_id"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="181dp"
             tools:layout_editor_absoluteY="106dp" />
 
         <TextView
             android:id="@+id/tvProductName"
-            android:layout_width="184dp"
+            android:layout_width="170dp"
             android:layout_height="match_parent"
             android:text="@string/product_name"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="181dp"
             tools:layout_editor_absoluteY="106dp" />
 
         <TextView
             android:id="@+id/tvInvQty"
             android:layout_width="130dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/quantity"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="181dp"
             tools:layout_editor_absoluteY="106dp" />
 
@@ -100,24 +66,26 @@
     <TableRow
         android:id="@+id/tableRow2"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tableRow">
 
         <TextView
             android:id="@+id/tvProductIdData"
-            android:layout_width="98dp"
-            android:layout_height="wrap_content"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
             android:textAlignment="textStart"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="61dp"
             tools:layout_editor_absoluteY="316dp" />
 
         <TextView
             android:id="@+id/tvProductNameData"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
+            android:layout_width="172dp"
+            android:layout_height="match_parent"
             android:textAlignment="textStart"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="155dp"
             tools:layout_editor_absoluteY="308dp" />
 
@@ -126,9 +94,61 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="305dp"
             tools:layout_editor_absoluteY="324dp" />
 
     </TableRow>
+-->
+
+    <TextView
+        android:id="@+id/tvRackId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRack" />
+
+    <TextView
+        android:id="@+id/tvTotalQty"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRack" />
+
+    <Button
+        android:id="@+id/btnRack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/change"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRackId" />
+
+    <TextView
+        android:id="@+id/tvRack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Rack ID:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpInventory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="244dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalQty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

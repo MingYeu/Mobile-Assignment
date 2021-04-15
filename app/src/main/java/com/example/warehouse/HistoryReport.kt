@@ -115,13 +115,13 @@ class HistoryReport() : AppCompatActivity(){
                 }
                 val tvDateData: TextView = findViewById(R.id.tvDateData)
                 tvDateData.setText(sbDate)
-                val tvProductIdHisData: TextView = findViewById(R.id.tvProductIdHisData)
+                val tvProductIdHisData: TextView = findViewById(R.id.tvProdId)
                 tvProductIdHisData.setText(sbId)
-                val tvProductNameHisData: TextView = findViewById(R.id.tvProductNameHisData)
+                val tvProductNameHisData: TextView = findViewById(R.id.tvProdName)
                 tvProductNameHisData.setText(sbName)
                 val tvActionData: TextView = findViewById(R.id.tvActionData)
                 tvActionData.setText(sbAction)
-                val tvHisQtyData: TextView = findViewById(R.id.tvHisQtyData)
+                val tvHisQtyData: TextView = findViewById(R.id.tvProdQty)
                 tvHisQtyData.setText(sbQty)
 
 

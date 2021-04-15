@@ -17,9 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse">
-        <activity android:name=".SearchProdActivity" android:label="Search" />
-        <activity android:name=".RetriveProdActivity" android:label="Details" />
-        <activity android:name=".InternalMapActivity" android:label="Internal Maps"  />
+        <activity android:name=".SearchAll"></activity>
+        <activity
+            android:name=".SearchProdActivity"
+            android:label="Search" />
+        <activity
+            android:name=".RetriveProdActivity"
+            android:label="Details" />
+        <activity
+            android:name=".InternalMapActivity"
+            android:label="Internal Maps" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,6 +38,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAWcBgVbgBMS-HAZY-OctS9MrC0AuwXhC4" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
 
         <activity android:name=".MyProfile" />
         <activity android:name=".CreateNewPassword" />

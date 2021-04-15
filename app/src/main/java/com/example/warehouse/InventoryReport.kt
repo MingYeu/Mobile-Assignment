@@ -3,12 +3,15 @@ package com.example.warehouse
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.zxing.integration.android.IntentIntegrator
 
 class InventoryReport : AppCompatActivity() {
     lateinit var totalQuantity: String
@@ -23,6 +26,11 @@ class InventoryReport : AppCompatActivity() {
         val tvRackId: TextView = findViewById(R.id.tvRackId)
         tvRackId.setText(rack)
 
+        val changeRack = findViewById<Button>(R.id.btnRack)
+        changeRack.setOnClickListener(){
+            val intent = Intent(this, RackInReport::class.java)
+            startActivity(intent)
+        }
 
         var getData = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -40,6 +48,8 @@ class InventoryReport : AppCompatActivity() {
         }
 
 
+
+/*
         var getStockData = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -75,12 +85,16 @@ class InventoryReport : AppCompatActivity() {
 
 
         }
+*/
 
 
         refInventory.addValueEventListener(getData)
         refInventory.addListenerForSingleValueEvent(getData)
-        refStock.addValueEventListener(getStockData)
-        refStock.addListenerForSingleValueEvent(getStockData)
+//        refStock.addValueEventListener(getStockData)
+//        refStock.addListenerForSingleValueEvent(getStockData)
+        val viewpager2 = findViewById<ViewPager2>(R.id.vpInventory)
+        val adapter = InvFragmentAdapter (supportFragmentManager,lifecycle,rack)
 
+        viewpager2.adapter=adapter
     }
 }

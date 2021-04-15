@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import java.util.*
 
 class Search : AppCompatActivity(){
@@ -26,6 +27,11 @@ class Search : AppCompatActivity(){
             startActivity(intent)
         }
 
+        val btn_search_all = findViewById<ImageButton>(R.id.btn_search_all)
+        btn_search_all.setOnClickListener(){
+            val intent = Intent(this, SearchAll::class.java)
+            startActivity(intent)
 
+        }
     }
 }
