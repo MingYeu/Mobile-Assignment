@@ -6,19 +6,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/product_scan"
+<!--    <Button-->
+<!--        android:id="@+id/product_scan"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="95dp"-->
+<!--        android:layout_marginTop="335dp"-->
+<!--        android:layout_marginEnd="95dp"-->
+<!--        android:layout_marginBottom="336dp"-->
+<!--        android:text="@string/scan_product"-->
+<!--        android:textSize="30sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageButton
+        android:id="@+id/imageButton_Product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="335dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="336dp"
-        android:text="@string/scan_product"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="197dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="353dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/search" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="296dp"
+        android:text="Product Scan"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_Product" />
 </androidx.constraintlayout.widget.ConstraintLayout>

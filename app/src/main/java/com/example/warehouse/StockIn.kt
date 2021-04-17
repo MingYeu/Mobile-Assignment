@@ -43,6 +43,7 @@ class StockIn : AppCompatActivity(){
 
     var selectedPicture : Uri? = null
     var selectedBitmap : Bitmap? = null
+    lateinit var haveStock : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,9 +61,10 @@ class StockIn : AppCompatActivity(){
 
 //        val ref = FirebaseDatabase.getInstance().getReference("Report")
 //        ref.setValue("History")
+        haveStock = intent?.getStringExtra("hasStock").toString()
 
         //Have Stock?
-        if(intent?.getStringExtra("hasStock").toString() == "1")
+        if(haveStock == "1")
         {
             //Database
             val database = FirebaseDatabase.getInstance()
@@ -247,6 +249,7 @@ class StockIn : AppCompatActivity(){
     }
 
     fun store(){
+        Toast.makeText(applicationContext, "Store", Toast.LENGTH_LONG).show()
         storeData()
     }
 
@@ -254,9 +257,14 @@ class StockIn : AppCompatActivity(){
         val prodName = findViewById<EditText>(R.id.etProductName)
         val quant = findViewById<EditText>(R.id.etProductQuantity)
         val price = findViewById<EditText>(R.id.etProductPrice)
+        Toast.makeText(applicationContext, "Store Data", Toast.LENGTH_LONG).show()
+        var updateQuantity : Int = 0
 
-        //Quantity
-        val updateQuantity = quant.text.toString().toInt() + productQuantity.toInt()
+        if(haveStock == "1")
+        {
+            //Quantity
+            updateQuantity = quant.text.toString().toInt() + productQuantity.toInt()
+        }
         //date
         val dateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
         val date = Date()
@@ -275,38 +283,38 @@ class StockIn : AppCompatActivity(){
 //        val refHistoryReport = FirebaseDatabase.getInstance().getReference("Report")
 
         val prodNam = findViewById<EditText>(R.id.etProductName)
-        if(prodNam.isEnabled == false)
+        if(haveStock == "1")
         {
             val stock = Stock(productId, productName, updateQuantity.toString(), productPrice, imgaeStore, rackID)
             reff.child("Stock").child(productId).setValue(stock).addOnCompleteListener{
-                Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Saved", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
         else{
-            val stock = Stock(productId, prodName.text.toString(), updateQuantity.toString(), price.text.toString(), imgaeStore, rackID)
+            val stock = Stock(productId, prodName.text.toString(), quant.text.toString(), price.text.toString(), imgaeStore, rackID)
             reff.child("Stock").child(productId).setValue(stock).addOnCompleteListener{
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
-        val ref = FirebaseDatabase.getInstance().getReference("Report").child("History").child(strDate)
-        val pushedPostRef: DatabaseReference = ref.push()
-        val postId = pushedPostRef.key
-
-        val refReport=ref.child(postId.toString())
-        refReport.child("Date").setValue(strDate)
-        refReport.child("Product Id").setValue(productId)
-        refReport.child("Product Name").setValue(productName)
-        refReport.child("Action").setValue(action)
-        refReport.child("Quantity").setValue(quant.text.toString())
-
-        val refInventory = FirebaseDatabase.getInstance().getReference("Report").child("Inventory").child(rackID)
-        val totalQty= (quant.text.toString().toInt()+totalQuantity.toInt()).toString()
-        refInventory.child("totalQty").setValue(totalQty)
-        refInventory.child("Rack").setValue(rackID)
+//        val ref = FirebaseDatabase.getInstance().getReference("Report").child("History").child(strDate)
+//        val pushedPostRef: DatabaseReference = ref.push()
+//        val postId = pushedPostRef.key
+//
+//        val refReport=ref.child(postId.toString())
+//        refReport.child("Date").setValue(strDate)
+//        refReport.child("Product Id").setValue(productId)
+//        refReport.child("Product Name").setValue(productName)
+//        refReport.child("Action").setValue(action)
+//        refReport.child("Quantity").setValue(quant.text.toString())
+//
+//        val refInventory = FirebaseDatabase.getInstance().getReference("Report").child("Inventory").child(rackID)
+//        val totalQty= (quant.text.toString().toInt()+totalQuantity.toInt()).toString()
+//        refInventory.child("totalQty").setValue(totalQty)
+//        refInventory.child("Rack").setValue(rackID)
 
     }
 

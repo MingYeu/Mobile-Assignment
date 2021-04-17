@@ -5,10 +5,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -31,7 +28,7 @@ class ProductScan : AppCompatActivity() {
         val scanner = IntentIntegrator(this)
         scanner.initiateScan()
 
-        val clickScan = findViewById<Button>(R.id.product_scan)
+        val clickScan = findViewById<ImageButton>(R.id.imageButton_Product)
         clickScan.setOnClickListener(){
             val scanner = IntentIntegrator(this)
             scanner.initiateScan()
@@ -43,10 +40,10 @@ class ProductScan : AppCompatActivity() {
             val result : IntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
             if(result != null) {
                 if(result.contents == null) {
-                    Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_SHORT).show();
                     navigate(result.contents)
                 }
             } else {

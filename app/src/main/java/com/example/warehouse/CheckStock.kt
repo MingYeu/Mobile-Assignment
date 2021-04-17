@@ -73,7 +73,7 @@ class CheckStock : AppCompatActivity(){
         else if(hasStock == 0 && page.equals("1"))
         {
             val intent = Intent(this, RackScan::class.java)
-            intent.putExtra("hasStock", hasStock)
+            intent.putExtra("hasStock", hasStock.toString())
             intent.putExtra("productID", productId)
             startActivity(intent)
         }

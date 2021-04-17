@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
@@ -24,7 +25,7 @@ class RackScan : AppCompatActivity() {
         val haveStock = intent?.getStringExtra("hasStock")
         hasStock = haveStock.toString()
 
-        val button: Button = findViewById(R.id.rack_scan)
+        val button: ImageButton = findViewById(R.id.imageButton_Rack)
         button.setOnClickListener {
             val scanner = IntentIntegrator(this)
             scanner.initiateScan()
@@ -36,10 +37,10 @@ class RackScan : AppCompatActivity() {
             val result : IntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
             if(result != null) {
                 if(result.contents == null) {
-                    Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_SHORT).show();
 
                     val intent = Intent(this, StockIn::class.java)
                     intent.putExtra("productID", prodID)
