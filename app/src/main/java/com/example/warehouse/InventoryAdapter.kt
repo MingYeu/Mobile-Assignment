@@ -16,7 +16,7 @@ class InventoryAdapter (private var prodList: List<Inventory>, val context: Cont
         val tvProdName: TextView = item.findViewById(R.id.tvProdname)
         val tvProdId: TextView = item.findViewById(R.id.tvProdID)
         val tvProdQty: TextView = item.findViewById(R.id.tvProdqty)
-
+        val iVProd: ImageView = item.findViewById(R.id.iVProd)
 
     }
 
@@ -30,6 +30,9 @@ class InventoryAdapter (private var prodList: List<Inventory>, val context: Cont
         holder.tvProdName.setText(item.name)
         holder.tvProdId.setText("ID: " +item.StockId)
         holder.tvProdQty.setText("Quantity: " +item.quantity)
+        val imageBytes = Base64.decode(item.image, 0)
+        val imag = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        holder.iVProd.setImageBitmap(imag)
 
     }
 

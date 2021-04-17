@@ -17,8 +17,7 @@ import com.google.firebase.database.ValueEventListener
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -47,22 +46,25 @@ class InventoryFragment(val rack:String) : Fragment() {
         val myRef = database.getReference("Stock")
         val InvList: RecyclerView = view.findViewById(R.id.InvList)
 
+/*
         var prodName:String="Name"
         var prodQuantity:String="Qty"
         var prodID :String="Id"
+*/
 
         var getData = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (c in snapshot.children) {
                     if (c.child("rack").getValue().toString().equals(rack)) {
-                        prodName = c.child("name").getValue().toString()
-                        prodQuantity = c.child("quantity").getValue().toString()
-                        prodID = c.child("stockId").getValue().toString()
+                        var image = c.child("image").getValue().toString()
+                        var prodName = c.child("name").getValue().toString()
+                        var prodQuantity = c.child("quantity").getValue().toString()
+                        var prodID = c.child("stockId").getValue().toString()
 
 
+
+                        items.add(Inventory(image,prodID, prodName, prodQuantity))
                     }
-                    items.add(Inventory(prodID, prodName, prodQuantity))
-
                 }
                 InvList.adapter = InventoryAdapter(items, this@InventoryFragment.requireContext())
                 InvList.layoutManager = LinearLayoutManager(activity)
