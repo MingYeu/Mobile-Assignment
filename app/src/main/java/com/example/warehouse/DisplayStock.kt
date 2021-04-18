@@ -78,9 +78,16 @@ class DisplayStock : AppCompatActivity(){
         myRef.addValueEventListener(getData)
         myRef.addListenerForSingleValueEvent(getData)
 
-        val btn = findViewById<Button>(R.id.btnBack)
-        btn.setOnClickListener {
+        val btnBack = findViewById<Button>(R.id.btnBack)
+        btnBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnEdit = findViewById<Button>(R.id.btnEdit)
+        btnEdit.setOnClickListener {
+            val intent = Intent(this, EditStock::class.java)
+            intent.putExtra("productID", productId)
             startActivity(intent)
         }
     }

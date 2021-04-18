@@ -27,6 +27,9 @@
         <activity
             android:name=".InternalMapActivity"
             android:label="Internal Maps" />
+        <activity
+            android:name=".EditStock"
+            android:label="Edit Stock" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
