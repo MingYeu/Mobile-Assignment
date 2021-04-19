@@ -90,7 +90,7 @@ class SearchFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
                 var getData = object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-
+                        category.clear()
                         for (c in snapshot.children) {
 
                             var categoryName = c.key.toString()
@@ -146,7 +146,7 @@ class SearchFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
                 var getData = object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-
+                       // srcItems.clear()
                         for (c in snapshot.children) {
 
                             var itemName = c.child("name").getValue().toString()

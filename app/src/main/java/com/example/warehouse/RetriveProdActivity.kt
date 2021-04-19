@@ -43,7 +43,7 @@ class RetriveProdActivity : AppCompatActivity() {
                     var quantity = c.child("quantity").getValue().toString().toInt()
                     var rack = c.child("rack").getValue().toString()
                     var id = c.child("stockId").getValue().toString()
-                   items.add(categoryItem(itemName,itemPrice,quantity,rack,id))
+                    items.add(categoryItem(itemName,itemPrice,quantity,rack,id))
                     showName.add(id)
                 }
 
@@ -71,7 +71,7 @@ class RetriveProdActivity : AppCompatActivity() {
                 prod_Name.setText(currentItem.itemName)
                 rack_Id.setText(currentItem.rack)
                 prodQty.setText(currentItem.quantity.toString())
-                prod_Price.setText(currentItem.price.toString())
+                prod_Price.setText("RM %.2f".format(currentItem.price))
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

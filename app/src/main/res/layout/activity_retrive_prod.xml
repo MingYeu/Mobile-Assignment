@@ -71,5 +71,51 @@
         app:layout_constraintStart_toStartOf="@+id/prodName"
         app:layout_constraintTop_toBottomOf="@+id/prodName" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_rack_id"
+        android:textColor="@color/deep_purple"
+        app:layout_constraintStart_toStartOf="@+id/rackId"
+        app:layout_constraintTop_toBottomOf="@+id/rackId" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_product_id"
+        android:textColor="@color/deep_purple"
+        app:layout_constraintStart_toStartOf="@+id/prodId"
+        app:layout_constraintTop_toBottomOf="@+id/prodId" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_quantity"
+        android:textColor="@color/deep_purple"
+        app:layout_constraintStart_toStartOf="@+id/prodQty"
+        app:layout_constraintTop_toBottomOf="@+id/prodQty" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_item_name"
+        android:textColor="@color/deep_purple"
+        app:layout_constraintStart_toStartOf="@+id/prodName"
+        app:layout_constraintTop_toBottomOf="@+id/prodName" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/lbl_item_list"
+        android:textColor="@color/deep_purple"
+        app:layout_constraintBottom_toTopOf="@+id/prodItem"
+        app:layout_constraintStart_toStartOf="@+id/prodItem" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
