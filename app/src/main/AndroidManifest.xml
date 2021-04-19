@@ -46,7 +46,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".EditProfile" />
         <activity android:name=".MyProfile" />
         <activity android:name=".CreateNewPassword" />
         <activity android:name=".Verify" />

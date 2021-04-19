@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
@@ -16,7 +17,27 @@ class Homepage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homepage)
 
-       // val buttonIn: ImageButton = findViewById(R.id.btn_stock_in)
+        val username = intent.getStringExtra("uname")
+        val type = intent.getStringExtra("userType")
+
+        val btnMyProfile = findViewById<ImageView>(R.id.btnMyProfile)
+        btnMyProfile.setOnClickListener(){
+            val intent = Intent(this, MyProfile::class.java)
+            intent.putExtra("userType", type);
+            intent.putExtra("uname", username);
+            startActivity(intent)
+        }
+
+        val btnLogOut = findViewById<ImageView>(R.id.btnLogout)
+        btnLogOut.setOnClickListener(){
+            val intent = Intent(this, LogIn::class.java)
+            intent.putExtra("userType", "");
+            intent.putExtra("uname", "");
+            startActivity(intent)
+        }
+
+
+        // val buttonIn: ImageButton = findViewById(R.id.btn_stock_in)
         val buttonIn: CardView = findViewById(R.id.btn_stock_in)
         buttonIn.setOnClickListener {
             val intent = Intent(this, ProductScan::class.java)

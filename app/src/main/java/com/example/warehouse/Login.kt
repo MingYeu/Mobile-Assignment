@@ -19,6 +19,7 @@ class LogIn : AppCompatActivity() {
     lateinit var checkPwd : String
     lateinit var checkUE : String
     lateinit var dbPwd : String
+    lateinit var type : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class LogIn : AppCompatActivity() {
 
 
         btnSignIn.setOnClickListener(){
+
 
             checkUE = txtUE.text.toString()
             checkPwd = txtPwd.text.toString()
@@ -114,6 +116,7 @@ class LogIn : AppCompatActivity() {
 
     private fun checkLogin(){
         if (checkPwd == tryPassword){
+            type="Admin"
             allowLogin()
 //            val myToast = Toast.makeText(applicationContext,success, Toast.LENGTH_LONG).show()
         }else if(checkPwd != tryPassword){
@@ -123,6 +126,7 @@ class LogIn : AppCompatActivity() {
     }
     private fun checkLogin2(){
         if (checkPwd == tryPassword){
+            type="Staff"
             allowLogin()
 //            val myToast = Toast.makeText(applicationContext,success, Toast.LENGTH_LONG).show()
         }else if(checkPwd != tryPassword){
@@ -134,6 +138,8 @@ class LogIn : AppCompatActivity() {
     private  fun allowLogin(){
         val myToast = Toast.makeText(applicationContext,"Login Successful", Toast.LENGTH_LONG).show()
         val intent = Intent(this, Homepage::class.java)
+        intent.putExtra("userType", type);
+        intent.putExtra("uname", checkUE);
         startActivity(intent)
     }
 
@@ -142,4 +148,27 @@ class LogIn : AppCompatActivity() {
         val myToast = Toast.makeText(applicationContext,"Invalid username or password", Toast.LENGTH_LONG).show()
     }
 
+    override fun onBackPressed() {
+
+    }
 }
+
+
+////db location
+//val database = FirebaseDatabase.getInstance()
+//val myRef = database.getReference("User").child("Staff")
+//// Read from the database
+//myRef.child(checkUE).addValueEventListener(object : ValueEventListener {
+//    override fun onDataChange(dataSnapshot: DataSnapshot) {
+//        val dbPwd = dataSnapshot.child("password").getValue().toString()
+//    }
+//    override fun onCancelled(error: DatabaseError) {
+//    }
+//})
+//if (checkPwd == dbPwd){
+//    val intent = Intent(this, MyProfile::class.java)
+//    startActivity(intent)
+//}else{
+//    val intent = Intent(this, ForgotPassword::class.java)
+//    startActivity(intent)
+//}

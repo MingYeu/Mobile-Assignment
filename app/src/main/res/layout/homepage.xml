@@ -10,13 +10,41 @@
     android:gravity="center">
 
     <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingTop="70dp">
 
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:paddingTop="100dp">
+        android:paddingTop="50dp">
+    <ImageView
+        android:id="@+id/btnMyProfile"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/myprofile" />
+    <ImageView
+        android:id="@+id/btnLogout"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/logout" />
+        ></LinearLayout>
+
+    <LinearLayout
+
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingTop="20dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btn_stock_in"

@@ -8,11 +8,11 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/admUE"
-        android:layout_width="208dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="102dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="90dp"
         android:hint="Admin Username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,11 +21,11 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/admPwd"
-        android:layout_width="208dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="102dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="90dp"
         android:hint="Admin Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,54 +34,56 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="86dp"
         android:text="You must Login As Admin to create an account"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/btnCont"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="107dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="101dp"
         android:text="Continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="107dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="65dp"
         android:text="Cancel"
         android:textColor="#000000"
         app:backgroundTint="#FFFFFF"
         app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCont" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="122dp"
-        android:layout_height="122dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="145dp"
+        android:id="@+id/imageView2"
+        android:layout_width="117dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="147dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pic1" />
+        app:srcCompat="@drawable/shield" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
