@@ -68,6 +68,9 @@ class MyProfile : AppCompatActivity() {
         }
 
     }
-
+    override fun onBackPressed() {
+        val intent = Intent(this, Homepage::class.java)
+        startActivity(intent)
+    }
 
 }

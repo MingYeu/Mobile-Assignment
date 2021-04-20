@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
@@ -20,6 +21,7 @@ class SignUp : AppCompatActivity() {
         findViewById<EditText>(R.id.txtIptE).setText("")
         findViewById<EditText>(R.id.txtIptFN).setText("")
 
+
         val btnSignIn = findViewById<Button>(R.id.btnSignIn2)
         btnSignIn.setOnClickListener() {
             val intent = Intent(this, LogIn::class.java)
@@ -29,17 +31,13 @@ class SignUp : AppCompatActivity() {
         //Save as admin (1)
         val btnCreateAccount1= findViewById<Button>(R.id.btnCreateAccount1)
         btnCreateAccount1.setOnClickListener() {
-
-            clickSave1()
-
+                clickSave1()
         }
 
         //Save as Staff (2)
         val btnCreateAccount2= findViewById<Button>(R.id.btnCreateAccount2)
         btnCreateAccount2.setOnClickListener() {
-
-            clickSave2()
-
+                clickSave2()
         }
     }
 

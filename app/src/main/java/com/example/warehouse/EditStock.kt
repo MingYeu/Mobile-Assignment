@@ -26,6 +26,9 @@ import java.util.*
 
 class EditStock : AppCompatActivity(){
 
+    lateinit var spinner: Spinner
+    lateinit var rackType : String
+
     lateinit var image : String
     lateinit var productName : String
     lateinit var productQuantity : String
@@ -70,7 +73,7 @@ class EditStock : AppCompatActivity(){
                 val prodId = findViewById<TextView>(R.id.tvProductID)
                 prodId.text = "Product id   : $productId"
                 val prodRack = findViewById<TextView>(R.id.RackID)
-                prodRack.text = "Rack id      : $rackID"
+                prodRack.text = "Rack I      : $rackID"
                 val prodQuan = findViewById<TextView>(R.id.etProductQuantity)
                 prodQuan.text = "Quantity     : $productQuantity"
                 val prodPri = findViewById<EditText>(R.id.etProductPrice)
@@ -88,6 +91,21 @@ class EditStock : AppCompatActivity(){
 
         myRef.addValueEventListener(getData)
         myRef.addListenerForSingleValueEvent(getData)
+
+//        Drop Down List Rack Type
+        spinner = findViewById<Spinner>(R.id.RackIDSpin)
+        val spinnerOption = arrayOf("R001", "R002", "R003", "R004", "R005", "R006", "R007", "R008", "R009", "R010")
+        spinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, spinnerOption)
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show();
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                rackType = spinnerOption[position]
+            }
+        }
 
         val btnUpdate = findViewById<Button>(R.id.btnUpdate)
         btnUpdate.setOnClickListener {
@@ -161,7 +179,6 @@ class EditStock : AppCompatActivity(){
 
     private fun UpdateProduct()
     {
-
         val prodName = findViewById<EditText>(R.id.etProductName)
         val price = findViewById<EditText>(R.id.etProductPrice)
 
@@ -180,23 +197,19 @@ class EditStock : AppCompatActivity(){
             alert.setMessage("Are you sure")
 
             alert.setNegativeButton("No") { dialogInterface: DialogInterface?, which: Int -> Toast.makeText(applicationContext, "Not Saved", Toast.LENGTH_LONG).show() }
-            alert.setPositiveButton("Yes") { dialogInterface: DialogInterface?, which: Int -> store()}
+            alert.setPositiveButton("Yes") { dialogInterface: DialogInterface?, which: Int -> store() }
 
             alert.show()
-
-
         }
     }
 
     fun store(){
-        Toast.makeText(applicationContext, "Store", Toast.LENGTH_LONG).show()
         storeData()
     }
 
     private fun storeData() {
         val prodName = findViewById<EditText>(R.id.etProductName)
         val price = findViewById<EditText>(R.id.etProductPrice)
-        Toast.makeText(applicationContext, "Store Data", Toast.LENGTH_LONG).show()
 
         if(changePicture == true)
         {
@@ -208,7 +221,7 @@ class EditStock : AppCompatActivity(){
 
             val reff = FirebaseDatabase.getInstance().getReference()
 
-            val stock = Stock(productId, prodName.text.toString(), productQuantity, price.text.toString(), imgaeStore, rackID)
+            val stock = Stock(productId, prodName.text.toString(), productQuantity, price.text.toString(), imgaeStore, rackType)
             reff.child("Stock").child(productId).setValue(stock).addOnCompleteListener{
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainActivity::class.java)
@@ -219,7 +232,7 @@ class EditStock : AppCompatActivity(){
         else{
             val reff = FirebaseDatabase.getInstance().getReference()
 
-            val stock = Stock(productId, prodName.text.toString(), productQuantity, price.text.toString(), image, rackID)
+            val stock = Stock(productId, prodName.text.toString(), productQuantity, price.text.toString(), image, rackType)
             reff.child("Stock").child(productId).setValue(stock).addOnCompleteListener{
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainActivity::class.java)

@@ -54,8 +54,6 @@ class EditProfile:AppCompatActivity() {
         myRef.addListenerForSingleValueEvent(getData)
 
         //val here
-        val changeName = findViewById<EditText>(R.id.changeName)
-        val changeEmail = findViewById<EditText>(R.id.changeEmail)
         val btnUpdate = findViewById<Button>(R.id.btnUpdate)
         val btnCancel = findViewById<Button>(R.id.btnCancel3)
 
@@ -68,6 +66,9 @@ class EditProfile:AppCompatActivity() {
         //Update Button
         btnUpdate.setOnClickListener(){
             val myToast = Toast.makeText(applicationContext,"Processing, please wait...",Toast.LENGTH_SHORT).show()
+
+            val changeName = findViewById<EditText>(R.id.changeName)
+            val changeEmail = findViewById<EditText>(R.id.changeEmail)
 
             val new1 = changeName.text.toString()
             val new2 = changeEmail.text.toString()

@@ -41,16 +41,31 @@ class RackScan : AppCompatActivity() {
 
                 } else {
                     Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_SHORT).show();
+                    navigate(result.contents)
 
-                    val intent = Intent(this, StockIn::class.java)
-                    intent.putExtra("productID", prodID)
-                    intent.putExtra("rackID", result.contents)
-                    intent.putExtra("hasStock", hasStock)
-                    startActivity(intent)
                 }
             } else {
                 super.onActivityResult(requestCode, resultCode, data);
             }
+        }
+    }
+
+    private fun navigate(RackId : String)
+    {
+        if(RackId.startsWith("R"))
+        {
+            val intent = Intent(this, StockIn::class.java)
+            intent.putExtra("productID", prodID)
+            intent.putExtra("rackID", RackId)
+            intent.putExtra("hasStock", hasStock)
+            startActivity(intent)
+
+        }
+        else{
+            Toast.makeText(applicationContext, "Wrong Rack Code", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, RackScan::class.java)
+            startActivity(intent)
         }
     }
 }

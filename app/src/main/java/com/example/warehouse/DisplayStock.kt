@@ -30,7 +30,6 @@ class DisplayStock : AppCompatActivity(){
         //Intend Value
         productId = intent?.getStringExtra("productID").toString()
         type = intent.getStringExtra("userType").toString()
-        Toast.makeText(applicationContext, type, Toast.LENGTH_LONG).show()
 
         //Database
         val database = FirebaseDatabase.getInstance()
