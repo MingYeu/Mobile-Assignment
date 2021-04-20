@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:gravity="center"
-    android:background="@drawable/back">
+    android:background="@drawable/back_1">
 
     <LinearLayout
         android:clipToPadding="false"
@@ -36,7 +36,8 @@
         android:layout_height="25dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/logout" />
-        ></LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
 
