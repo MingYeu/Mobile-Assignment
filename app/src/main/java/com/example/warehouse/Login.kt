@@ -136,7 +136,7 @@ class LogIn : AppCompatActivity() {
     }
 
     private  fun allowLogin(){
-        val myToast = Toast.makeText(applicationContext,"Login Successful", Toast.LENGTH_LONG).show()
+        val myToast = Toast.makeText(applicationContext,"Login Successful", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, Homepage::class.java)
         intent.putExtra("userType", type);
         intent.putExtra("uname", checkUE);
@@ -145,7 +145,7 @@ class LogIn : AppCompatActivity() {
 
     private  fun denyLogin(){
         findViewById<EditText>(R.id.txtPwd).setText("")
-        val myToast = Toast.makeText(applicationContext,"Invalid username or password", Toast.LENGTH_LONG).show()
+        val myToast = Toast.makeText(applicationContext,"Invalid username or password", Toast.LENGTH_SHORT).show()
     }
 
     override fun onBackPressed() {

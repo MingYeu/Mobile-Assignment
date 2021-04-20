@@ -38,38 +38,37 @@
         android:id="@+id/tvProName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="28dp"
         android:text="@string/product_name"
         app:layout_constraintStart_toEndOf="@+id/productImage"
-        app:layout_constraintTop_toTopOf="@+id/productImage" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProRack" />
 
     <TextView
         android:id="@+id/tvProId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="28dp"
         android:text="@string/product_id"
-        app:layout_constraintStart_toStartOf="@+id/tvProName"
-        app:layout_constraintTop_toBottomOf="@+id/tvProName" />
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvProQty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="28dp"
         android:text="@string/quantity"
-        app:layout_constraintBottom_toBottomOf="@+id/productImage"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvProName" />
 
     <TextView
         android:id="@+id/tvProRack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="29dp"
         android:text="@string/rack_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvProName" />
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvProId" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,21 +109,6 @@ class StockIn : AppCompatActivity(){
             }
 
 
-/*
-            val refInventory = FirebaseDatabase.getInstance().getReference("Report").child("Inventory").child(rackID)
-
-            var getInvData=object:ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {
-
-                }
-
-                override fun onDataChange(snapShot: DataSnapshot) {
-                    totalQuantity=snapShot.child("totalQty").getValue().toString()
-
-                }
-            }
-*/
-
 
             myRef.addValueEventListener(getData)
             myRef.addListenerForSingleValueEvent(getData)
@@ -175,6 +160,7 @@ class StockIn : AppCompatActivity(){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     fun selectImage(view: View) {
