@@ -71,6 +71,7 @@ class Homepage : AppCompatActivity() {
         val btnSearch: ImageButton =findViewById(R.id.btn_search)
         btnSearch.setOnClickListener{
             val intent = Intent(this, Search::class.java)
+            intent.putExtra("userType", type);
             startActivity(intent)
         }
 

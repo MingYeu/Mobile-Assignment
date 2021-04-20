@@ -12,9 +12,13 @@ import com.google.zxing.integration.android.IntentResult
 
 class SearchScanProduct :AppCompatActivity(){
 
+    lateinit var type:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_scan_product)
+
+        type = intent.getStringExtra("userType").toString()
 
         val scanner = IntentIntegrator(this)
         scanner.initiateScan()
@@ -49,6 +53,7 @@ class SearchScanProduct :AppCompatActivity(){
         {
             val intent = Intent(this, DisplayStock::class.java)
             intent.putExtra("productID", productId)
+            intent.putExtra("userType", type);
             startActivity(intent)
         }
         else{

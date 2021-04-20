@@ -15,15 +15,19 @@ class Search : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search)
 
+        val type = intent.getStringExtra("userType")
+
         val btnEnter = findViewById<ImageButton>(R.id.btn_search_enter)
         btnEnter.setOnClickListener {
             val intent = Intent(this, SearchEnterProduct::class.java)
+            intent.putExtra("userType", type);
             startActivity(intent)
         }
 
         val btnScan = findViewById<ImageButton>(R.id.btn_search_scan)
         btnScan.setOnClickListener(){
             val intent = Intent(this, SearchScanProduct::class.java)
+            intent.putExtra("userType", type);
             startActivity(intent)
         }
 

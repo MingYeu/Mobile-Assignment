@@ -21,6 +21,7 @@ class DisplayStock : AppCompatActivity(){
 
     lateinit var productId : String
     var imageDisplay : Bitmap? = null
+    lateinit var type:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,8 @@ class DisplayStock : AppCompatActivity(){
 
         //Intend Value
         productId = intent?.getStringExtra("productID").toString()
+        type = intent.getStringExtra("userType").toString()
+        Toast.makeText(applicationContext, type, Toast.LENGTH_LONG).show()
 
         //Database
         val database = FirebaseDatabase.getInstance()
@@ -89,6 +92,10 @@ class DisplayStock : AppCompatActivity(){
             val intent = Intent(this, EditStock::class.java)
             intent.putExtra("productID", productId)
             startActivity(intent)
+        }
+
+        if(type == "Staff"){
+            btnEdit.isEnabled = false
         }
     }
 
