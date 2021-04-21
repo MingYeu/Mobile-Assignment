@@ -16,6 +16,8 @@ class MyProfile : AppCompatActivity() {
     lateinit var name:String
     lateinit var uName:String
     lateinit var email:String
+    lateinit var type:String
+    lateinit var userName:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +72,8 @@ class MyProfile : AppCompatActivity() {
     }
     override fun onBackPressed() {
         val intent = Intent(this, Homepage::class.java)
+        intent.putExtra("userType", type);
+        intent.putExtra("uname", userName);
         startActivity(intent)
     }
 
