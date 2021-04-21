@@ -16,14 +16,14 @@
             android:id="@+id/edit_productId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="112dp"
             android:autofillHints=""
             android:ems="10"
             android:importantForAccessibility="no"
             android:inputType="textCapSentences"
             android:labelFor="@id/lbl_productId"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.298"
+            app:layout_constraintHorizontal_bias="0.274"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,14 +31,14 @@
             android:id="@+id/lbl_productId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="32dp"
             android:importantForAccessibility="no"
             android:text="@string/product_id"
             app:layout_constraintBottom_toTopOf="@+id/edit_productId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.724" />
+            app:layout_constraintVertical_bias="0.769" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -70,8 +70,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="164dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="156dp"
             android:text="@string/category"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_productId" />
@@ -81,10 +81,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="96dp"
             android:text="@string/choose_your_state"
             app:layout_constraintEnd_toEndOf="@+id/edit_productId"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_productId" />
     </androidx.constraintlayout.widget.ConstraintLayout>

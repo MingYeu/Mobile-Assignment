@@ -10,12 +10,12 @@
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="80dp"
         android:text="@string/title"
         android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,6 @@
         android:id="@+id/detail_warehouse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
         android:layout_marginBottom="81dp"
         android:text="@string/detail_warehouse"
         android:textColor="#31291D1D"
@@ -44,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="@+id/circle_4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/item_id"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_title"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -80,14 +79,13 @@
         android:id="@+id/circle_1"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="76dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_id"
-        android:padding="15dp"
         android:background="@drawable/cerclebackgroundgrey"
-        app:srcCompat="@drawable/ic_baseline_check_24"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:padding="15dp"
+        app:layout_constraintStart_toStartOf="@+id/item_id"
+        app:layout_constraintTop_toBottomOf="@+id/item_id"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
 
     <ImageView
         android:id="@+id/circle_2"
@@ -166,7 +164,7 @@
         android:text="@string/delivered"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/out_delivery_msg"
-        app:layout_constraintEnd_toEndOf="@+id/circle_4"
+        app:layout_constraintEnd_toEndOf="@+id/detail_warehouse"
         app:layout_constraintStart_toStartOf="@+id/circle_4" />
 
 
